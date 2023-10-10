@@ -61,8 +61,10 @@ export class ContactTriggerCdkStack extends cdk.Stack {
       description: "Amazon Connect Event Rule for specific instance",
       eventPattern: {
         source: ["aws.connect"],
-        detailType: ["Amazon connect contact event"],
-        resources: [this.props.amazonConnectInstanceArn],
+        detailType: ["Amazon Connect Contact Event"],
+        detail: {
+          "instanceArn": [this.props.amazonConnectInstanceArn]
+        }
       },
     });
 
